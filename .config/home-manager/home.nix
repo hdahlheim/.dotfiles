@@ -172,10 +172,15 @@
   programs.home-manager.enable = true;
 
   targets.darwin.defaults = {
+    "com.apple.dock" = {
+      tilesize = 26;
+    };
+
     "com.apple.Safari" = {
       IncludeDevelopMenu = true;
       AutoFillPasswords = false;
       AutoOpenSafeDownloads = false;
+      ShowOverlayStatusBar = true;
     };
 
   };
