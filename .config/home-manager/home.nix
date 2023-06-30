@@ -38,6 +38,7 @@
     starship
     rtx
     direnv
+    wireguard-tools
     
     # fonts
     ibm-plex
@@ -97,9 +98,9 @@
     	enable = true;
 	plugins = [
           "zsh-users/zsh-autosuggestions"
-	  "zdharma/fast-syntax-highlighting"
-	  "joshskidmore/zsh-fzf-history-search"
-	  "zsh-users/zsh-completions"
+          "zdharma/fast-syntax-highlighting"
+          "joshskidmore/zsh-fzf-history-search"
+          "zsh-users/zsh-completions"
 	];
     };
     shellAliases = {
@@ -128,7 +129,7 @@
       };
       username = {
         show_always = true;
-	format = "[$user]($style)@";
+        format = "[$user]($style)@";
       };
       character = {
         success_symbol = "[>](bold green)";
@@ -155,7 +156,7 @@
     settings = {
       settings = {
         asdf_compat = true;
-	verbose = false;
+        verbose = false;
       };
     };
   };
