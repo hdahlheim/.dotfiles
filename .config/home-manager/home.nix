@@ -43,6 +43,8 @@
     devbox
     hurl
     gh
+    colima
+    docker-client
 
     # fonts
     ibm-plex
