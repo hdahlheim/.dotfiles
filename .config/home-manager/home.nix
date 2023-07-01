@@ -39,6 +39,7 @@
     rtx
     direnv
     wireguard-tools
+    git-crypt
     
     # fonts
     ibm-plex
