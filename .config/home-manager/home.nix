@@ -109,6 +109,7 @@
       ls = "exa";
       vi = "nvim";
       vim = "nvim";
+      hms = "home-manager switch";
       update = "nix-channel --update && home-manager switch";
       dotfiles = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
     };
