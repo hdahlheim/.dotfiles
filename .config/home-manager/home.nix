@@ -108,7 +108,7 @@
           "zdharma/fast-syntax-highlighting"
           "joshskidmore/zsh-fzf-history-search"
           "zsh-users/zsh-completions"
-	];
+        ];
     };
     enableAutosuggestions = true;
     shellAliases = {
@@ -178,7 +178,6 @@
 
   programs.direnv.nix-direnv.enable = true;
   
-
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
 
@@ -193,6 +192,5 @@
       AutoOpenSafeDownloads = false;
       ShowOverlayStatusBar = true;
     };
-
   };
 }
