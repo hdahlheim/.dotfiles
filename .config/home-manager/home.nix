@@ -94,6 +94,7 @@
   # if you don't want to manage your shell through Home Manager.
   home.sessionVariables = {
      EDITOR = "nvim";
+     BAT_THEME="ansi";
   };
 
   programs.zsh = {
@@ -109,6 +110,7 @@
           "zsh-users/zsh-completions"
 	];
     };
+    enableAutosuggestions = true;
     shellAliases = {
       ll = "exa -abl --group-directories-first";
       ls = "exa";
