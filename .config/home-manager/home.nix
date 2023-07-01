@@ -117,8 +117,9 @@
       vi = "nvim";
       vim = "nvim";
       hms = "home-manager switch";
+      hme = "home-manager edit";
       update = "nix-channel --update && home-manager switch";
-      dotfiles = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
+      dot = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
     };
     history = {
       size = 10000;
