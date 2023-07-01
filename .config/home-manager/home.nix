@@ -40,7 +40,10 @@
     direnv
     wireguard-tools
     git-crypt
-    
+    devbox
+    hurl
+    gh
+
     # fonts
     ibm-plex
     fira-code
@@ -119,6 +122,7 @@
     };
     dirHashes = {
       dev = "$HOME/Developer";
+      hdgit = "$HOME/Developer/github.com/hdahlheim";
     };
   };
 
