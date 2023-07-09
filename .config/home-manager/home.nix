@@ -45,6 +45,9 @@
     gh
     colima
     docker-client
+    nixpacks
+    iftop
+    lf
 
     # fonts
     ibm-plex
@@ -102,13 +105,13 @@
     autocd = true;
     profileExtra = "source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'";
     antidote = {
-    	enable = true;
-	plugins = [
-          "zsh-users/zsh-autosuggestions"
-          "zdharma/fast-syntax-highlighting"
-          "joshskidmore/zsh-fzf-history-search"
-          "zsh-users/zsh-completions"
-        ];
+      enable = true;
+      plugins = [
+        "zsh-users/zsh-autosuggestions"
+        "zdharma/fast-syntax-highlighting"
+        "joshskidmore/zsh-fzf-history-search"
+        "zsh-users/zsh-completions"
+      ];
     };
     enableAutosuggestions = true;
     shellAliases = {
