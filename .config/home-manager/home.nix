@@ -48,6 +48,7 @@
     nixpacks
     iftop
     lf
+    nix-your-shell
 
     # fonts
     ibm-plex
@@ -103,7 +104,12 @@
   programs.zsh = {
     enable = true;
     autocd = true;
-    profileExtra = "source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'";
+    profileExtra = "
+    source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
+    if command -v nix-your-shell > /dev/null; then
+      nix-your-shell zsh | source /dev/stdin
+    fi
+    ";
     antidote = {
       enable = true;
       plugins = [
@@ -152,6 +158,45 @@
       };
       git_commit = {
         tag_symbol = " tag ";
+      };
+      git_status = {
+        ahead = ">";
+        behind = "<";
+        diverged = "<>";
+        renamed = "r";
+        deleted = "x";
+      };
+      golang = {
+        symbol = "go ";
+      };
+      rust = {
+        symbol = "rust ";
+      };
+      deno = {
+        symbol = "deno ";
+      };
+      nodejs = {
+        disabled = true;
+        symbol = "node.js ";
+      };
+      elixir = {
+        symbol = "elixir ";
+      };
+      erlang = {
+        symbol = "erlang ";
+      };
+      nix_shell = {
+       symbol = "";
+      };
+      package = {
+        disabled = true;
+        symbol = "pkg ";
+      };
+      php = {
+        symbol = "php ";
+      };
+      directory = {
+        read_only = " ro";
       };
     };
   };
