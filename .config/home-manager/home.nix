@@ -49,6 +49,10 @@
     iftop
     lf
     nix-your-shell
+    zls
+    #elixir
+    beam.packages.erlangR26.elixir_1_15
+    go_1_21
 
     # fonts
     ibm-plex
@@ -99,6 +103,8 @@
   home.sessionVariables = {
      EDITOR = "nvim";
      BAT_THEME="ansi";
+     LANG="en_US.UTF-8";
+     LC_ALL="en_US.UTF-8";
   };
 
   programs.zsh = {
@@ -129,6 +135,7 @@
       hme = "home-manager edit";
       update = "nix-channel --update && home-manager switch";
       dot = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
+      netq = "networkquality";
     };
     history = {
       size = 10000;
@@ -143,6 +150,7 @@
   programs.starship = {
     enable = true;
     settings = {
+      command_timeout = 1000;
       add_newline = false;
       hostname = {
         ssh_only = false;
@@ -176,7 +184,7 @@
         symbol = "deno ";
       };
       nodejs = {
-        disabled = true;
+        # disabled = true;
         symbol = "node.js ";
       };
       elixir = {
@@ -208,6 +216,9 @@
     userName = "Henning Dahlheim";
     userEmail = "dev@dahlheim.ch";
     lfs = { enable = true; };
+    extraConfig = {
+      init.defaultBranch = "main";
+    };
   };
 
   programs.rtx = {
