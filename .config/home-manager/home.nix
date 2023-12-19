@@ -17,7 +17,14 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [
+  home.packages = with pkgs; 
+  let 
+    erlang = beam.interpreters.erlang_26;
+    elixir = (beam.packagesWith erlang).elixir.override {
+      version = "1.15.6";
+      sha256 = "sha256-eRwyqylldsJOsGAwm61m7jX1yrVDrTPS0qO23lJkcKc=";
+    };
+  in [
     bat
     jq
     hugo
@@ -33,7 +40,7 @@
     wget
     neofetch
     zoxide
-    exa
+    eza
     bottom
     starship
     rtx
@@ -50,14 +57,18 @@
     lf
     nix-your-shell
     zls
-    #elixir
-    beam.packages.erlangR26.elixir_1_15
+    erlang
+    elixir
     go_1_21
+    flyctl
 
     # fonts
     ibm-plex
     fira-code
     fira-go
+
+    youtube-dl
+    mpv
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -115,6 +126,7 @@
     if command -v nix-your-shell > /dev/null; then
       nix-your-shell zsh | source /dev/stdin
     fi
+    bindkey -e
     ";
     antidote = {
       enable = true;
@@ -127,13 +139,14 @@
     };
     enableAutosuggestions = true;
     shellAliases = {
-      ll = "exa -abl --group-directories-first";
-      ls = "exa";
+      ll = "eza -abl --group-directories-first";
+      ls = "eza";
       vi = "nvim";
       vim = "nvim";
       hms = "home-manager switch";
       hme = "home-manager edit";
       update = "nix-channel --update && home-manager switch";
+      upgrade = "sudo -i sh -c 'nix-channel --update && nix-env --install --attr nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'";
       dot = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
       netq = "networkquality";
     };
@@ -150,7 +163,7 @@
   programs.starship = {
     enable = true;
     settings = {
-      command_timeout = 1000;
+      command_timeout = 1500;
       add_newline = false;
       hostname = {
         ssh_only = false;
@@ -215,9 +228,21 @@
     enable = true;
     userName = "Henning Dahlheim";
     userEmail = "dev@dahlheim.ch";
+    ignores = [ ".DS_Store" ];
+    includes = [
+      {
+        condition = "gitdir:~/Developer/gitlab.cyon.lan/";
+        contents = {
+          user.name = "Henning Dahlheim";
+          user.email = "hd@cyon.ch";
+        };
+      }
+    ];
     lfs = { enable = true; };
     extraConfig = {
       init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+      pull.ff = true;
     };
   };
 
