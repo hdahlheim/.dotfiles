@@ -21,8 +21,9 @@
   let 
     erlang = beam.interpreters.erlang_26;
     elixir = (beam.packagesWith erlang).elixir.override {
-      version = "1.15.6";
-      sha256 = "sha256-eRwyqylldsJOsGAwm61m7jX1yrVDrTPS0qO23lJkcKc=";
+      version = "1.16.0";
+      sha256 = "sha256-nM3TpX18zdjDAFkljsAqwKx/1AQmwDMIQCeL75etTQc=";
+      #sha256 = lib.fakeSha256;
     };
   in [
     bat
@@ -43,7 +44,7 @@
     eza
     bottom
     starship
-    rtx
+    mise
     direnv
     wireguard-tools
     git-crypt
@@ -61,6 +62,7 @@
     elixir
     go_1_21
     flyctl
+    heroku
 
     # fonts
     ibm-plex
@@ -149,6 +151,7 @@
       upgrade = "sudo -i sh -c 'nix-channel --update && nix-env --install --attr nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'";
       dot = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
       netq = "networkquality";
+      flushdns = "sudo killall -HUP mDNSResponder";
     };
     history = {
       size = 10000;
@@ -237,6 +240,13 @@
           user.email = "hd@cyon.ch";
         };
       }
+      {
+        condition = "gitdir:~/Developer/github.com/republik/";
+        contents = {
+          user.name = "Henning Dahlheim";
+          user.email = "henning.dahlheim@republik.ch";
+        };
+      }
     ];
     lfs = { enable = true; };
     extraConfig = {
@@ -246,13 +256,11 @@
     };
   };
 
-  programs.rtx = {
+  programs.mise = {
     enable = true;
     settings = {
-      settings = {
-        asdf_compat = true;
-        verbose = false;
-      };
+      asdf_compat = true;
+      verbose = false;
     };
   };
 
