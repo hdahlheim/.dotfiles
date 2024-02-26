@@ -60,9 +60,11 @@
     zls
     erlang
     elixir
-    go_1_21
+    go_1_22
     flyctl
     heroku
+    deno
+    postgresql
 
     # fonts
     ibm-plex
@@ -71,6 +73,7 @@
 
     youtube-dl
     mpv
+    imagemagick
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -252,7 +255,7 @@
     extraConfig = {
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
-      pull.ff = true;
+      #pull.ff = true;
     };
   };
 
@@ -283,6 +286,10 @@
       AutoFillPasswords = false;
       AutoOpenSafeDownloads = false;
       ShowOverlayStatusBar = true;
+    };
+
+    "com.microsoft.VSCode" = {
+      ApplePressAndHoldEnabled = false;
     };
   };
 }
