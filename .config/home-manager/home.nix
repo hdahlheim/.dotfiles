@@ -65,6 +65,9 @@
     heroku
     deno
     postgresql
+    #corepack
+    #nodePackages.pnpm
+    turbo
 
     # fonts
     ibm-plex
@@ -104,6 +107,8 @@
     
     # disable tty login msg
     ".hushlogin".text = '''';
+    ".ssh/allowed_signers".text =
+      ''* ${builtins.readFile "${config.home.homeDirectory}/.ssh/id_hackbook_ed25519.pub"}'';
   };
 
   # You can also manage environment variables but you will have to manually
@@ -256,6 +261,10 @@
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
       #pull.ff = true;
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingkey = "~/.ssh/id_hackbook_ed25519.pub";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
     };
   };
 
