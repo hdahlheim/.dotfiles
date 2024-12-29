@@ -19,10 +19,11 @@
   # environment.
   home.packages = with pkgs; 
   let 
-    erlang = beam.interpreters.erlang_26;
+    erlang = beam.interpreters.erlang_27;
+    #elixir = (beam.packagesWith erlang).elixir_1_17;
     elixir = (beam.packagesWith erlang).elixir.override {
-      version = "1.16.0";
-      sha256 = "sha256-nM3TpX18zdjDAFkljsAqwKx/1AQmwDMIQCeL75etTQc=";
+      version = "1.18.1";
+      sha256 = "sha256-zJNAoyqSj/KdJ1Cqau90QCJihjwHA+HO7nnD1Ugd768=";
       #sha256 = lib.fakeSha256;
     };
   in [
@@ -39,7 +40,9 @@
     fzf
     tmux
     wget
-    neofetch
+    nmap
+    #neofetch
+    fastfetch
     zoxide
     eza
     bottom
@@ -47,6 +50,7 @@
     mise
     direnv
     wireguard-tools
+    git-filter-repo
     git-crypt
     devbox
     hurl
@@ -56,27 +60,38 @@
     nixpacks
     iftop
     lf
+    d2
+    gource
+    #nuclei
+    stripe-cli
     nix-your-shell
-    zls
+    #zig
+    #zls
     erlang
     elixir
-    go_1_22
+    go_1_23
     flyctl
     heroku
-    deno
+    #deno
     postgresql
+    #phpactor
+    btop
     #corepack
     #nodePackages.pnpm
-    turbo
+    #turbo
+    #chromedriver
 
     # fonts
     ibm-plex
     fira-code
     fira-go
 
-    youtube-dl
-    mpv
+    yt-dlp
+    #mpv
     imagemagick
+
+    #node stuff
+    nodePackages.prettier
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -136,6 +151,7 @@
     if command -v nix-your-shell > /dev/null; then
       nix-your-shell zsh | source /dev/stdin
     fi
+
     bindkey -e
     ";
     antidote = {
@@ -147,7 +163,9 @@
         "zsh-users/zsh-completions"
       ];
     };
-    enableAutosuggestions = true;
+    autosuggestion = { 
+      enable = true;
+    };
     shellAliases = {
       ll = "eza -abl --group-directories-first";
       ls = "eza";
@@ -233,6 +251,14 @@
     };
   };
 
+  programs.zoxide = {
+    enable = true;
+    enableZshIntegration = true;
+    options = [
+      "--cmd zd"
+    ];
+  };
+
   programs.fzf.enable = true;
 
   programs.git = {
@@ -302,3 +328,4 @@
     };
   };
 }
+
