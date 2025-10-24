@@ -19,29 +19,27 @@
   # environment.
   home.packages = with pkgs; 
   let 
-    erlang = beam.interpreters.erlang_27;
-    #elixir = (beam.packagesWith erlang).elixir_1_17;
-    elixir = (beam.packagesWith erlang).elixir.override {
-      version = "1.18.1";
-      sha256 = "sha256-zJNAoyqSj/KdJ1Cqau90QCJihjwHA+HO7nnD1Ugd768=";
-      #sha256 = lib.fakeSha256;
-    };
+    beam-otp = beam.packages.erlang_28; 
   in [
+    stow
+    scc
     bat
+    dnsutils
     jq
     hugo
     htop
     ripgrep
     git
+    jujutsu
     zsh
     tree
-    tldr
     neovim
-    fzf
+    helix
+    #fzf
     tmux
     wget
     nmap
-    #neofetch
+    dive
     fastfetch
     zoxide
     eza
@@ -49,37 +47,39 @@
     starship
     mise
     direnv
-    wireguard-tools
+    #wireguard-tools
     git-filter-repo
     git-crypt
-    devbox
-    hurl
     gh
-    colima
-    docker-client
-    nixpacks
     iftop
     lf
     d2
     gource
-    #nuclei
+    lazygit
     stripe-cli
     nix-your-shell
-    #zig
-    #zls
-    erlang
-    elixir
-    go_1_23
+    zig
+    zls
+    llvm
+    beam-otp.erlang
+    beam-otp.elixir_1_19
+    beam-otp.elixir-ls
+    nixd
+    go_1_25
     flyctl
     heroku
-    #deno
+    esbuild
     postgresql
-    #phpactor
     btop
-    #corepack
-    #nodePackages.pnpm
-    #turbo
-    #chromedriver
+    zellij
+    k6
+    miller
+    typos
+    trivy
+
+    # docs
+    pandoc
+    asciidoctor
 
     # fonts
     ibm-plex
@@ -90,8 +90,6 @@
     #mpv
     imagemagick
 
-    #node stuff
-    nodePackages.prettier
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
     # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
@@ -141,7 +139,13 @@
      BAT_THEME="ansi";
      LANG="en_US.UTF-8";
      LC_ALL="en_US.UTF-8";
+     ERL_AFLAGS="-kernel shell_history enabled";
+     MIX_OS_DEPS_COMPILE_PARTITION_COUNT="$(($(sysctl -n hw.physicalcpu) / 2))";
   };
+
+  home.sessionPath = [
+    "$HOME/.local/bin"
+  ];
 
   programs.zsh = {
     enable = true;
@@ -165,9 +169,9 @@
     };
     autosuggestion = { 
       enable = true;
-    };
+    }; 
     shellAliases = {
-      ll = "eza -abl --group-directories-first";
+      ll = "eza -abl";
       ls = "eza";
       vi = "nvim";
       vim = "nvim";
@@ -186,7 +190,15 @@
     dirHashes = {
       dev = "$HOME/Developer";
       hdgit = "$HOME/Developer/github.com/hdahlheim";
+      republik = "$HOME/Developer/github.com/republik";
     };
+  };
+
+  programs.eza = {
+    enable = true;
+    icons = "never";
+    git = true;
+    extraOptions = [ "--group-directories-first" ];
   };
 
   programs.starship = {
@@ -263,8 +275,17 @@
 
   programs.git = {
     enable = true;
-    userName = "Henning Dahlheim";
-    userEmail = "dev@dahlheim.ch";
+    settings = {
+      user.name = "Henning Dahlheim";
+      user.mail = "dev@dahlheim.ch";
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
+      #pull.ff = true;
+      commit.gpgsign = true;
+      gpg.format = "ssh";
+      user.signingkey = "~/.ssh/id_hackbook_ed25519.pub";
+      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
+    };
     ignores = [ ".DS_Store" ];
     includes = [
       {
@@ -283,15 +304,6 @@
       }
     ];
     lfs = { enable = true; };
-    extraConfig = {
-      init.defaultBranch = "main";
-      push.autoSetupRemote = true;
-      #pull.ff = true;
-      commit.gpgsign = true;
-      gpg.format = "ssh";
-      user.signingkey = "~/.ssh/id_hackbook_ed25519.pub";
-      gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
-    };
   };
 
   programs.mise = {
@@ -314,6 +326,7 @@
   targets.darwin.defaults = {
     "com.apple.dock" = {
       tilesize = 26;
+      slow-motion-allowed = true;
     };
 
     "com.apple.Safari" = {
@@ -324,6 +337,10 @@
     };
 
     "com.microsoft.VSCode" = {
+      ApplePressAndHoldEnabled = false;
+    };
+
+    "dev.zed.Zed" = {
       ApplePressAndHoldEnabled = false;
     };
   };
