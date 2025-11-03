@@ -26,28 +26,18 @@
     bat
     dnsutils
     jq
-    hugo
     htop
     ripgrep
-    git
-    jujutsu
+    #jujutsu
     zsh
     tree
     neovim
     helix
-    #fzf
     tmux
     wget
     nmap
     dive
     fastfetch
-    zoxide
-    eza
-    bottom
-    starship
-    mise
-    direnv
-    #wireguard-tools
     git-filter-repo
     git-crypt
     gh
@@ -57,17 +47,17 @@
     gource
     lazygit
     stripe-cli
-    nix-your-shell
-    zig
-    zls
     llvm
     beam-otp.erlang
     beam-otp.elixir_1_19
     beam-otp.elixir-ls
     nixd
-    go_1_25
+    nil
+    shfmt
+    shellcheck
     flyctl
     heroku
+    ansible
     esbuild
     postgresql
     btop
@@ -75,7 +65,10 @@
     k6
     miller
     typos
+    harper
     trivy
+
+    nushell
 
     # docs
     pandoc
@@ -141,6 +134,13 @@
      LC_ALL="en_US.UTF-8";
      ERL_AFLAGS="-kernel shell_history enabled";
      MIX_OS_DEPS_COMPILE_PARTITION_COUNT="$(($(sysctl -n hw.physicalcpu) / 2))";
+     FZF_DEFAULT_OPTS="
+	--reverse
+        --color=fg:#908caa,bg:#232136,hl:#ea9a97
+        --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+        --color=border:#44415a,header:#3e8fb0,gutter:#232136
+        --color=spinner:#f6c177,info:#9ccfd8
+        --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa";
   };
 
   home.sessionPath = [
@@ -152,10 +152,6 @@
     autocd = true;
     profileExtra = "
     source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
-    if command -v nix-your-shell > /dev/null; then
-      nix-your-shell zsh | source /dev/stdin
-    fi
-
     bindkey -e
     ";
     antidote = {
@@ -238,7 +234,6 @@
         symbol = "deno ";
       };
       nodejs = {
-        # disabled = true;
         symbol = "node.js ";
       };
       elixir = {
@@ -263,6 +258,8 @@
     };
   };
 
+  
+
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -272,21 +269,27 @@
   };
 
   programs.fzf.enable = true;
+  #programs.atuin.enable = true;
+  programs.nix-your-shell.enable = true;
+
 
   programs.git = {
     enable = true;
     settings = {
       user.name = "Henning Dahlheim";
-      user.mail = "dev@dahlheim.ch";
+      user.email = "dev@dahlheim.ch";
       init.defaultBranch = "main";
       push.autoSetupRemote = true;
-      #pull.ff = true;
       commit.gpgsign = true;
       gpg.format = "ssh";
       user.signingkey = "~/.ssh/id_hackbook_ed25519.pub";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
     };
-    ignores = [ ".DS_Store" ];
+    ignores = [
+      ".DS_Store"
+      "mise.local.toml"
+      ".mise.local.toml"
+    ];
     includes = [
       {
         condition = "gitdir:~/Developer/gitlab.cyon.lan/";
@@ -334,7 +337,7 @@
       AutoFillPasswords = false;
       AutoOpenSafeDownloads = false;
       ShowOverlayStatusBar = true;
-    };
+    }; 
 
     "com.microsoft.VSCode" = {
       ApplePressAndHoldEnabled = false;
