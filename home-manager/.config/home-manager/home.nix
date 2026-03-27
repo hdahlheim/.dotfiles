@@ -179,11 +179,10 @@
       ls = "eza";
       vi = "nvim";
       vim = "nvim";
-      hms = "home-manager switch";
-      hme = "home-manager edit";
-      update = "nix-channel --update && home-manager switch";
-      upgrade = "sudo -i sh -c 'nix-channel --update && nix-env --install --attr nixpkgs.nix && launchctl remove org.nixos.nix-daemon && launchctl load /Library/LaunchDaemons/org.nixos.nix-daemon.plist'";
-      dot = "/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME";
+      hms = "home-manager switch --flake ~/.dotfiles#hd";
+      hme = "cd ~/.dotfiles && $EDITOR home-manager/.config/home-manager/home.nix";
+      update = "nix flake update --flake ~/.dotfiles && home-manager switch --flake ~/.dotfiles#hd";
+      upgrade = "sudo -i sh -c 'nix upgrade-nix'";
       netq = "networkquality";
       flushdns = "sudo killall -HUP mDNSResponder";
     };
