@@ -28,6 +28,8 @@
     jq
     htop
     ripgrep
+    sox
+    ffmpeg
     #jujutsu
     zsh
     tree
@@ -44,18 +46,17 @@
     iftop
     lf
     d2
-    gource
+    #gource
     lazygit
     stripe-cli
     llvm
-    beam-otp.erlang
-    beam-otp.elixir_1_19
-    beam-otp.elixir-ls
+    #beam-otp.erlang
+    #beam-otp.elixir_1_19
+    #beam-otp.elixir-ls
     nixd
     nil
     shfmt
     shellcheck
-    flyctl
     heroku
     ansible
     esbuild
@@ -66,22 +67,28 @@
     miller
     typos
     harper
-    trivy
+    rclone
 
     nushell
+    kanata
 
     # docs
     pandoc
-    asciidoctor
+    #asciidoctor
 
     # fonts
     ibm-plex
     fira-code
     fira-go
+    work-sans
 
-    yt-dlp
+    #yt-dlp
     #mpv
     imagemagick
+
+    #php
+    php84
+    php84Packages.composer
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -134,17 +141,18 @@
      LC_ALL="en_US.UTF-8";
      ERL_AFLAGS="-kernel shell_history enabled";
      MIX_OS_DEPS_COMPILE_PARTITION_COUNT="$(($(sysctl -n hw.physicalcpu) / 2))";
-     FZF_DEFAULT_OPTS="
-	--reverse
-        --color=fg:#908caa,bg:#232136,hl:#ea9a97
-        --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
-        --color=border:#44415a,header:#3e8fb0,gutter:#232136
-        --color=spinner:#f6c177,info:#9ccfd8
-        --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa";
+     #FZF_DEFAULT_OPTS="
+     # 	--reverse
+     #   --color=fg:#908caa,bg:#232136,hl:#ea9a97
+     #   --color=fg+:#e0def4,bg+:#393552,hl+:#ea9a97
+     #   --color=border:#44415a,header:#3e8fb0,gutter:#232136
+     #   --color=spinner:#f6c177,info:#9ccfd8
+     #   --color=pointer:#c4a7e7,marker:#eb6f92,prompt:#908caa";
   };
 
   home.sessionPath = [
     "$HOME/.local/bin"
+    "$HOME/.config/composer/vendor/bin"
   ];
 
   programs.zsh = {
@@ -165,7 +173,7 @@
     };
     autosuggestion = { 
       enable = true;
-    }; 
+    };
     shellAliases = {
       ll = "eza -abl";
       ls = "eza";
@@ -258,8 +266,6 @@
     };
   };
 
-  
-
   programs.zoxide = {
     enable = true;
     enableZshIntegration = true;
@@ -289,6 +295,7 @@
       ".DS_Store"
       "mise.local.toml"
       ".mise.local.toml"
+      ".claude/*"
     ];
     includes = [
       {
@@ -311,10 +318,12 @@
 
   programs.mise = {
     enable = true;
-    settings = {
-      asdf_compat = true;
-      verbose = false;
-    };
+    #globalConfig = {
+    #  settings = {
+    #    asdf_compat = true;
+    #    verbose = false;
+    #  };
+    #};
   };
 
   programs.direnv = {
