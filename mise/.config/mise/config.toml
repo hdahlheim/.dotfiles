@@ -1,0 +1,23 @@
+[settings]
+experimental = true
+idiomatic_version_file_enable_tools = ["node"]
+
+[tools]
+biome = "latest"
+deno = "2.5.4"
+flyctl = "latest"
+hugo = "latest"
+pnpm = "latest"
+"github:elixir-lang/expert" = "v0.1.0-rc.5"
+"github:jdx/fnox" = "latest"
+"github:lxc/incus" = "latest"
+"github:peterldowns/localias" = "latest"
+watchexec = "latest"
+zls = "latest"
+elixir = "latest"
+erlang = "28.4"
+node = "lts"
+claude = "latest"
+opentofu = "latest"
+
+[env]
