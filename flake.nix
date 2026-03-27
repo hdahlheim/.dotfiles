@@ -10,8 +10,9 @@
   };
 
   outputs = { nixpkgs, home-manager, ... }: {
-    homeConfigurations."hd" = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${builtins.currentSystem};
+    # MacBook
+    homeConfigurations."mbp2501" = home-manager.lib.homeManagerConfiguration {
+      pkgs = nixpkgs.legacyPackages."aarch64-darwin";
       modules = [ ./home-manager/.config/home-manager/home.nix ];
     };
   };
