@@ -21,4 +21,4 @@ cd "$DOTFILES_DIR"
 nix run nixpkgs#stow -- -d "$DOTFILES_DIR" -t "$HOME" home-manager nix nvim
 
 # 4. Apply Home Manager config via flake
-nix run home-manager -- switch --flake "$DOTFILES_DIR#hd"
+nix run home-manager -- switch --flake "$DOTFILES_DIR#mbp2501"
