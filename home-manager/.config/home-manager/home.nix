@@ -121,7 +121,7 @@
     # disable tty login msg
     ".hushlogin".text = '''';
     ".ssh/allowed_signers".text =
-      ''* ${builtins.readFile "${config.home.homeDirectory}/.ssh/id_hackbook_ed25519.pub"}'';
+      ''* ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMVLR8sXRSwyACnuUH4nz2sMGN8ScDXJ6MlhakambwHW hackbook'';
   };
 
   # You can also manage environment variables but you will have to manually
@@ -290,6 +290,7 @@
       user.signingkey = "~/.ssh/id_hackbook_ed25519.pub";
       gpg.ssh.allowedSignersFile = "~/.ssh/allowed_signers";
     };
+    signing.format = "ssh";
     ignores = [
       ".DS_Store"
       "mise.local.toml"
@@ -325,11 +326,11 @@
     #};
   };
 
-  programs.direnv = {
-    enable = true;
-  };
+  #programs.direnv = {
+  #  enable = false;
+  #};
 
-  programs.direnv.nix-direnv.enable = true;
+  #programs.direnv.nix-direnv.enable = false;
   
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
