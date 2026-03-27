@@ -5,7 +5,6 @@
     enable = true;
     autocd = true;
     profileExtra = "
-    source '/nix/var/nix/profiles/default/etc/profile.d/nix-daemon.sh'
     bindkey -e
     ";
     antidote = {
@@ -54,6 +53,10 @@
       hdgit = "$HOME/Developer/github.com/hdahlheim";
       republik = "$HOME/Developer/github.com/republik";
     };
+  };
+
+  programs.mise = {
+    enable = true;
   };
 
   programs.eza = {

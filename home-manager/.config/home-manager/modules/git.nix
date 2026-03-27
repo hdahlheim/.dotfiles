@@ -38,14 +38,4 @@
     ];
     lfs = { enable = true; };
   };
-
-  programs.mise = {
-    enable = true;
-    #globalConfig = {
-    #  settings = {
-    #    asdf_compat = true;
-    #    verbose = false;
-    #  };
-    #};
-  };
 }
