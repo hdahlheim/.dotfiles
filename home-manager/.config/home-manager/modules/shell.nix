@@ -138,4 +138,9 @@
   programs.fzf.enable = true;
   #programs.atuin.enable = true;
   programs.nix-your-shell.enable = true;
+
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
 }
