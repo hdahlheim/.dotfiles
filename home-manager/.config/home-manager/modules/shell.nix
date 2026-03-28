@@ -29,7 +29,7 @@
       netq = "networkquality";
       flushdns = "sudo killall -HUP mDNSResponder";
     };
-    initExtra = ''
+    initContent = ''
       # Edit a home-manager module; fzf-select from .nix files in the config tree
       hme() {
         local dir="$HOME/.dotfiles/home-manager/.config/home-manager"
