@@ -24,8 +24,8 @@
       ls = "eza";
       vi = "nvim";
       vim = "nvim";
-      update = "nix flake update --flake ~/.dotfiles && hms";
-      upgrade = "sudo -i sh -c 'nix upgrade-nix'";
+      hmu = "nix flake update --flake ~/.dotfiles && hms";
+      upgrade-nix = "sudo determinate-nixd upgrade";
       netq = "networkquality";
       flushdns = "sudo killall -HUP mDNSResponder";
     };
