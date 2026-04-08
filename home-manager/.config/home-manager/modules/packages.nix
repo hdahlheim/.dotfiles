@@ -66,8 +66,8 @@
     fira-go
     work-sans
 
-    #yt-dlp
-    #mpv
+    yt-dlp
+    mpv
     imagemagick
 
     #php
