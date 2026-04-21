@@ -6,7 +6,6 @@
     ./modules/shell.nix
     ./modules/git.nix
     ./modules/macos.nix
-    ./modules/kanata.nix
   ];
 
   home.username = "hd";

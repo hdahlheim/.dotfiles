@@ -1,0 +1,64 @@
+// Zed settings
+//
+// For information on how to configure Zed, see the Zed
+// documentation: https://zed.dev/docs/configuring-zed
+//
+// To see all of Zed's default settings without changing your
+// custom settings, run `zed: open default settings` from the
+// command palette (cmd-shift-p / ctrl-shift-p)
+{
+  "agent": {
+    "default_width": 340.0,
+    "favorite_models": [],
+    "model_parameters": [],
+  },
+  "collaboration_panel": {
+    "button": false,
+  },
+  "outline_panel": {
+    "button": true,
+  },
+  "status_bar": {
+    "show_active_file": false,
+    "cursor_position_button": true,
+    "active_language_button": true,
+  },
+  "project_panel": {
+    "sort_order": "default",
+    "hide_hidden": false,
+    "hide_root": true,
+    "git_status_indicator": true,
+    "show_diagnostics": "errors",
+    "bold_folder_labels": false,
+    "git_status": true,
+    "folder_icons": true,
+    "file_icons": true,
+    "hide_gitignore": false,
+    "default_width": 340.0,
+    "dock": "right",
+    "button": true,
+  },
+  "tab_bar": {
+    "show": false,
+  },
+  "edit_predictions": {
+    "provider": "codestral",
+  },
+  "buffer_font_family": "Berkeley Mono",
+  "agent_servers": {
+    "claude-acp": {
+      "type": "registry",
+    },
+  },
+  "vim_mode": true,
+  "ui_font_size": 14,
+  "buffer_font_size": 12,
+  "buffer_line_height": {
+    "custom": 2.25,
+  },
+  "theme": {
+    "mode": "system",
+    "light": "Tokyo Night Light",
+    "dark": "Tokyo Night Storm",
+  },
+}
