@@ -24,7 +24,7 @@
     config = {
       Label = "org.local.kanata";
       ProgramArguments = [
-        "${pkgs.kanata}/bin/kanata"
+        "${config.home.homeDirectory}/.nix-profile/bin/kanata"
         "--cfg"
         "${config.home.homeDirectory}/.config/kanata/kanata.kbd"
       ];
