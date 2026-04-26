@@ -2,6 +2,10 @@
 
 {
   targets.darwin.defaults = {
+    "NSGlobalDomain" = {
+      ApplePressAndHoldEnabled = false
+    };
+
     "com.apple.dock" = {
       tilesize = 26;
       slow-motion-allowed = true;
