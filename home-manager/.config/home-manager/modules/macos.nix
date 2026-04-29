@@ -2,8 +2,8 @@
 
 {
   targets.darwin.defaults = {
-    "NSGlobalDomain" = {
-      ApplePressAndHoldEnabled = false
+    NSGlobalDomain = {
+      ApplePressAndHoldEnabled = false;
     };
 
     "com.apple.dock" = {
