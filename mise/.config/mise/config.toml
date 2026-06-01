@@ -7,7 +7,7 @@ biome = "latest"
 deno = "2.5.4"
 flyctl = "latest"
 hugo = "latest"
-pnpm = "latest"
+"github:pnpm/pnpm" = { version = "11.3.0", asset_pattern = "*-darwin-arm64.tar.gz" }
 "github:elixir-lang/expert" = "v0.1.0"
 "github:jdx/fnox" = "latest"
 "github:lxc/incus" = "latest"
@@ -15,9 +15,10 @@ pnpm = "latest"
 watchexec = "latest"
 zls = "latest"
 elixir = "latest"
-erlang = "28.4"
+erlang = "28.5"
 node = "lts"
 claude = "latest"
 opentofu = "latest"
+"github:controlplaneio-fluxcd/flux-operator" = { version = "0.48.0", asset_pattern = "flux-operator_*.tar.gz" }
 
 [env]

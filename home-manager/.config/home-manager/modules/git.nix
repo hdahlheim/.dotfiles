@@ -20,6 +20,7 @@
       ".mise.local.toml"
       ".claude/*"
       ".expert"
+      ".claude"
     ];
     includes = [
       {

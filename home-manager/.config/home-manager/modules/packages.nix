@@ -14,6 +14,7 @@
     ripgrep
     sox
     ffmpeg
+    mailhog
     #jujutsu
     zsh
     tree
