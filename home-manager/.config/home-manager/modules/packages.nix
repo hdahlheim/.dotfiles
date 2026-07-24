@@ -70,6 +70,7 @@
     yt-dlp
     mpv
     imagemagick
+    libwebp
 
     #php
     php84

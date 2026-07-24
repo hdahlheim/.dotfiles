@@ -20,5 +20,6 @@ node = "lts"
 claude = "latest"
 opentofu = "latest"
 "github:controlplaneio-fluxcd/flux-operator" = { version = "0.48.0", asset_pattern = "flux-operator_*.tar.gz" }
+cloudflared = "latest"
 
 [env]
